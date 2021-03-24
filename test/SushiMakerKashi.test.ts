@@ -1,5 +1,5 @@
-//import { ethers } from "hardhat";
-//const { keccak256, defaultAbiCoder } = require("ethers");
+import { ethers } from "hardhat";
+const { keccak256, defaultAbiCoder } = require("ethers");
 import { expect } from "chai";
 import { prepare, deploy, getBigNumber, createSLP } from "./utilities"
 
@@ -33,12 +33,12 @@ describe("KashiSushiMaker", function () {
     await createSLP(this, "daiMIC", this.dai, this.mic, getBigNumber(10))
     await this.kashiMaster.setFeeTo(this.kashiMaker.address)
     await this.bento.whitelistMasterContract(this.kashiMaster.address, true)
-    //await this.sushi.approve(this.bento.address, getBigNumber(10))
-    //await this.dai.approve(this.bento.address, getBigNumber(10))
-    //await this.mic.approve(this.bento.address, getBigNumber(10))
-    //await this.usdc.approve(this.bento.address, getBigNumber(10))
-    //await this.weth.approve(this.bento.address, getBigNumber(10))
-    //await this.strudel.approve(this.bento.address, getBigNumber(10))
+    await this.sushi.approve(this.bento.address, getBigNumber(10))
+    await this.dai.approve(this.bento.address, getBigNumber(10))
+    await this.mic.approve(this.bento.address, getBigNumber(10))
+    await this.usdc.approve(this.bento.address, getBigNumber(10))
+    await this.weth.approve(this.bento.address, getBigNumber(10))
+    await this.strudel.approve(this.bento.address, getBigNumber(10))
     //await this.bento.deposit(this.sushi.address, this.address, this.address, getBigNumber(10))
     //await this.bento.deposit(this.dai.address, this.address, this.address, getBigNumber(10))
     //await this.bento.deposit(this.mic.address, this.address, this.address, getBigNumber(10))
