@@ -45,7 +45,7 @@ describe("KashiSushiMaker", function () {
     await this.bento.deposit(this.usdc.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.deposit(this.weth.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.deposit(this.strudel.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
-    await this.bento.setMasterContractApproval(this.alice.address, this.kashiMaster.address, true, 0, 0x0000000000000000000000000000000000000000000000000000000000000000, 0x0000000000000000000000000000000000000000000000000000000000000000)
+    await this.bento.setMasterContractApproval(this.alice.address, this.kashiMaster.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
   })
 
   describe("setBridge", function () {
