@@ -39,7 +39,7 @@ describe("KashiSushiMaker", function () {
     await this.usdc.approve(this.bento.address, getBigNumber(10))
     await this.weth.approve(this.bento.address, getBigNumber(10))
     await this.strudel.approve(this.bento.address, getBigNumber(10))
-    await this.bento.deposit(this.sushi.address, this.address, this.address, getBigNumber(10), 0)
+    await this.bento.deposit(this.sushi.address, this, this, getBigNumber(10), 0)
     //await this.bento.deposit(this.dai.address, this.address, this.address, getBigNumber(10))
     //await this.bento.deposit(this.mic.address, this.address, this.address, getBigNumber(10))
     //await this.bento.deposit(this.usdc.address, this.address, this.address, getBigNumber(10))
