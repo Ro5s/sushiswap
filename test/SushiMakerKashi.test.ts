@@ -1,5 +1,5 @@
-import { ethers } from "hardhat";
-const { keccak256, defaultAbiCoder } = require("ethers");
+//import { ethers } from "hardhat";
+//const { keccak256, defaultAbiCoder } = require("ethers");
 import { expect } from "chai";
 import { prepare, deploy, getBigNumber, createSLP } from "./utilities"
 
