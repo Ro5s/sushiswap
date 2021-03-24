@@ -46,8 +46,8 @@ describe("KashiSushiMaker", function () {
     await this.bento.deposit(this.weth.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.deposit(this.strudel.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.setMasterContractApproval(this.alice.address, this.kashiMaster.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
-    const initData = defaultAbiCoder.encode(this.sushi.address, this.dai.address, this.oracle.address, "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000017d78400")
-    //await this.bento.deploy(this.kashiMaster.address, 0x0000000000000000000000000d9c8723b343a8368bebe0b5e89273ff8d712e3c0000000000000000000000001fe16de955718cfab7a44605458ab023838c27930000000000000000000000001e8b2c9aa29360bf0b7b385cc82073000af9baaf000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000017d78400, true)
+    //const initData = defaultAbiCoder.encode(["address", "address", "address", "bytes"], [this.sushi.address, this.dai.address, this.oracle.address, oracleData])
+    //await this.bento.deploy(this.KashiMaster, initData, true)
   })
 
   describe("setBridge", function () {
