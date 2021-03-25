@@ -5,7 +5,7 @@ import { prepare, deploy, getBigNumber, createSLP } from "./utilities"
 
 describe("KashiSushiMaker", function () {
   before(async function () {
-    await prepare(this, ["SushiMakerKashi", "SushiBar", "ERC20Mock", "UniswapV2Factory", "UniswapV2Pair", "BentoBoxV1", "KashiPairMediumRiskV1", "PeggedOracleV1"])
+    await prepare(this, ["SushiMakerKashi", "SushiBar", "SushiMakerKashiExploitMock", "ERC20Mock", "UniswapV2Factory", "UniswapV2Pair", "BentoBoxV1", "KashiPairMediumRiskV1", "PeggedOracleV1"])
   })
 
   beforeEach(async function () {
@@ -24,6 +24,7 @@ describe("KashiSushiMaker", function () {
     await deploy(this, [["bento", this.BentoBoxV1, [this.weth.address]]])
     await deploy(this, [["kashiMaster", this.KashiPairMediumRiskV1, [this.bento.address]]])
     await deploy(this, [["kashiMaker", this.SushiMakerKashi, [this.factory.address, this.bar.address, this.bento.address, this.sushi.address, this.weth.address, this.factory.pairCodeHash()]]])
+    await deploy(this, [["exploiter", this.SushiMakerKashiExploitMock, [this.kashiMaker.address]]])
     await deploy(this, [["oracle", this.PeggedOracleV1]])
     // Create SLPs
     await createSLP(this, "sushiEth", this.sushi, this.weth, getBigNumber(10))
@@ -80,8 +81,7 @@ describe("KashiSushiMaker", function () {
   })
   
   describe("convert", function () {
-    it("only allows conversion against Kashi pair", async function () {
-      await expect(this.kashiMaker.convert(this.sushi.address)).to.be.reverted
+    it("reverts if caller is not EOA", async function () {
+      await expect(this.exploiter.convert(this.sushi.address)).to.be.revertedWith("Maker: Must use EOA")
     })
-  })
 })
