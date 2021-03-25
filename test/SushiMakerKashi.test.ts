@@ -84,4 +84,5 @@ describe("KashiSushiMaker", function () {
     it("reverts if caller is not EOA", async function () {
       await expect(this.exploiter.convert(this.sushi.address)).to.be.revertedWith("Maker: Must use EOA")
     })
+  })
 })
