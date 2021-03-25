@@ -54,7 +54,7 @@ describe("SushiMaker", function () {
      
   describe("convert", function () {
     it("should convert SUSHI - ETH", async function () {
-      await time.advanceBlockTo("89")
+      //await time.advanceBlockTo("89")
       await this.sushiEth.transfer(this.sushiMaker.address, getBigNumber(1))
       await this.sushiMaker.convert(this.sushi.address, this.weth.address)
       expect(await this.sushi.balanceOf(this.sushiMaker.address)).to.equal(0)
