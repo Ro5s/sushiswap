@@ -29,6 +29,7 @@ describe("SushiMaker", function () {
     await createSLP(this, "sushiUSDC", this.sushi, this.usdc, getBigNumber(10))
     await createSLP(this, "daiUSDC", this.dai, this.usdc, getBigNumber(10))
     await createSLP(this, "daiMIC", this.dai, this.mic, getBigNumber(10))
+    await this.oracle.updatePairs("sushiEth", "strudelEth", "daiEth", "usdcEth", "micUSDC", "sushiUSDC", "daiUSDC", "daiMIC")
   })
   
   describe("setBridge", function () {
