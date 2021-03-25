@@ -46,7 +46,7 @@ describe("KashiSushiMaker", function () {
     await this.bento.deposit(this.weth.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.deposit(this.strudel.address, this.alice.address, this.alice.address, getBigNumber(10), 0)
     await this.bento.setMasterContractApproval(this.alice.address, this.kashiMaster.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
-    //const oracleData = await this.oracle.getDataParameter()
+    //const oracleData = await this.oracle.getDataParameter("1")
     //const initData = defaultAbiCoder.encode(["address", "address", "address", "bytes"], [this.sushi.address, this.dai.address, this.oracle.address, oracleData])
     //await this.bento.deploy(this.KashiMaster.address, initData, true)
   })
@@ -72,8 +72,8 @@ describe("KashiSushiMaker", function () {
   })
   
   describe("convert", function () {
-    it("only allows calls against Kashi pair", async function () {
-      await expect(this.kashiMaker.convert(this.sushi.address)).doRevert()
+    it("only allows conversion against Kashi pair", async function () {
+      await expect(this.kashiMaker.convert(this.sushi.address)).revert()
     })
   })
 })
