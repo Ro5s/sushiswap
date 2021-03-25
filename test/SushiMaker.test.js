@@ -50,11 +50,10 @@ describe("SushiMaker", function () {
         .withArgs(this.dai.address, this.sushi.address)
     })
   })
-   
-  await time.advanceBlockTo("89")
-  
+     
   describe("convert", function () {
     it("should convert SUSHI - ETH", async function () {
+      await time.advanceBlockTo("89")
       await this.sushiEth.transfer(this.sushiMaker.address, getBigNumber(1))
       await this.sushiMaker.convert(this.sushi.address, this.weth.address)
       expect(await this.sushi.balanceOf(this.sushiMaker.address)).to.equal(0)
@@ -62,7 +61,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1897569270781234370")
     })
     
-    await time.advanceBlockTo("94")
+    //await time.advanceBlockTo("94")
 
     it("should convert USDC - ETH", async function () {
       await this.usdcEth.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -72,7 +71,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1590898251382934275")
     })
     
-    await time.advanceBlockTo("99")
+    //await time.advanceBlockTo("99")
     
     it("should convert $TRDL - ETH", async function () {
       await this.strudelEth.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -82,7 +81,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1590898251382934275")
     })
     
-    await time.advanceBlockTo("100")
+    //await time.advanceBlockTo("100")
 
     it("should convert USDC - SUSHI", async function () {
       await this.sushiUSDC.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -92,7 +91,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1897569270781234370")
     })
     
-    await time.advanceBlockTo("104")
+    //await time.advanceBlockTo("104")
 
     it("should convert using standard ETH path", async function () {
       await this.daiEth.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -102,7 +101,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1590898251382934275")
     })
     
-    await time.advanceBlockTo("199")
+    //await time.advanceBlockTo("199")
 
     it("converts MIC/USDC using more complex path", async function () {
       await this.micUSDC.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -114,7 +113,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1590898251382934275")
     })
     
-    await time.advanceBlockTo("204")
+    //await time.advanceBlockTo("204")
 
     it("converts DAI/USDC using more complex path", async function () {
       await this.daiUSDC.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -126,7 +125,7 @@ describe("SushiMaker", function () {
       expect(await this.sushi.balanceOf(this.bar.address)).to.equal("1590898251382934275")
     })
     
-    await time.advanceBlockTo("209")
+    //await time.advanceBlockTo("209")
 
     it("converts DAI/MIC using two step path", async function () {
       await this.daiMIC.transfer(this.sushiMaker.address, getBigNumber(1))
@@ -163,7 +162,7 @@ describe("SushiMaker", function () {
     })
   })
   
-  await time.advanceBlockTo("219")
+  //await time.advanceBlockTo("219")
   
   describe("convertMultiple", function () {
     it("should allow to convert multiple", async function () {
