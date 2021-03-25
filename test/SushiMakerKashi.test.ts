@@ -73,7 +73,7 @@ describe("KashiSushiMaker", function () {
   
   describe("convert", function () {
     it("only allows conversion against Kashi pair", async function () {
-      await expect(this.kashiMaker.convert(this.sushi.address)).revert()
+      await expect(this.kashiMaker.convert(this.sushi.address)).reverted()
     })
   })
 })
