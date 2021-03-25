@@ -29,7 +29,7 @@ describe("SushiMaker", function () {
     await createSLP(this, "sushiUSDC", this.sushi, this.usdc, getBigNumber(10))
     await createSLP(this, "daiUSDC", this.dai, this.usdc, getBigNumber(10))
     await createSLP(this, "daiMIC", this.dai, this.mic, getBigNumber(10))
-    await this.oracle.updatePairs("sushiEth", "strudelEth", "daiEth", "usdcEth", "micUSDC", "sushiUSDC", "daiUSDC", "daiMIC")
+    await this.oracle.updatePairs([this.sushiEth.address], [this.strudelEth.address], [this.daiEth.address], [this.usdcEth.address], [this.micUSDC.address], [this.sushiUSDC.address], [this.daiUSDC.address], [this.daiMIC.address])
   })
   
   describe("setBridge", function () {
