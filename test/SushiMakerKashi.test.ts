@@ -55,9 +55,9 @@ describe("KashiSushiMaker", function () {
     // Approve Kashi to spend 'alice' Bento tokens
     await this.bento.setMasterContractApproval(this.alice.address, this.kashiMaster.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
     // **TO-DO - Initialize Kashi Pair**
-    //const oracleData = await this.oracle.getDataParameter("1")
-    //const initData = defaultAbiCoder.encode(["address", "address", "address", "bytes"], [this.sushi.address, this.dai.address, this.oracle.address, oracleData])
-    //await this.bento.deploy(this.KashiMaster.address, initData, true)
+    const oracleData = await this.oracle.getDataParameter("1")
+    const initData = defaultAbiCoder.encode(["address", "address", "address", "bytes"], [this.sushi.address, this.dai.address, this.oracle.address, oracleData])
+    await this.bento.deploy(this.kashiMaster.address, initData, true)
   })
 
   describe("setBridge", function () {
