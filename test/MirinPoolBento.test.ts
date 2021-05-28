@@ -27,10 +27,4 @@ describe("MirinPoolBento", function () {
     // Approve Pool to spend 'alice' BentoBox tokens
     await this.bento.setMasterContractApproval(this.alice.address, this.pool.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
   })
- 
-  describe("mint", function () {
-    it("mint LP tokens from bento deposits", async function () {
-      await expect(this.pool.mint(this.alice.address)).to.be.revertedWith("MIRIN: INSUFFICIENT_LIQUIDITY_MINTED")
-    })
-  })
 })
