@@ -1,0 +1,36 @@
+import { ethers } from "hardhat";
+import { expect } from "chai";
+import { prepare, deploy, getBigNumber } from "./utilities"
+
+describe("MirinPoolBento", function () {f
+  before(async function () {
+    await prepare(this, ["ERC20Mock", "BentoBoxV1", "MirinPoolBento"])
+  })
+
+  beforeEach(async function () {
+    // Deploy ERC20 Mocks, Bento & Pool
+    await deploy(this, [
+      ["weth", this.ERC20Mock, ["WETH", "ETH", getBigNumber("10000000")]],
+      ["sushi", this.ERC20Mock, ["SUSHI", "SUSHI", getBigNumber("10000000")]],
+      ["dai", this.ERC20Mock, ["DAI", "DAI", getBigNumber("10000000")]],
+      ["bento", this.BentoBoxV1, [this.weth.address]],
+      ["pool", this.MirinPoolBento, [this.bento.address, this.sushi.address, this.dai.address, "0x0000000000000000000000000000000000000000000000000000000000000001", 1, this.alice.address]]
+    ])
+    // Whitelist Pool on Bento
+    await this.bento.whitelistMasterContract(this.pool.address, true)
+    // Approve Bento token deposits
+    await this.sushi.approve(this.bento.address, getBigNumber(10000))
+    await this.dai.approve(this.bento.address, getBigNumber(10000))
+    // Make Bento token deposits to Pool
+    await this.bento.deposit(this.sushi.address, this.alice.address, this.pool.address, getBigNumber(1000), 0)
+    await this.bento.deposit(this.dai.address, this.alice.address, this.pool.address, getBigNumber(100), 0)
+    // Approve Pool to spend 'alice' Bento tokens
+    await this.bento.setMasterContractApproval(this.alice.address, this.pool.address, true, "0", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000")
+  })
+                                        
+  describe("mint", function () {
+    it("mint LP tokens from bento deposits", async function () {
+      await expect(this.pool.mint(this.alice.address).to.be.revertedWith("MIRIN: INSUFFICIENT_LIQUIDITY_MINTED")
+    })
+  })                                        
+})
