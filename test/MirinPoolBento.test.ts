@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 import { expect } from "chai";
 import { prepare, deploy, getBigNumber } from "./utilities"
 
-describe("MirinPoolBento", function () {f
+describe("MirinPoolBento", function () {
   before(async function () {
     await prepare(this, ["ERC20Mock", "BentoBoxV1", "MirinPoolBento"])
   })
