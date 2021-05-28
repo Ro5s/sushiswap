@@ -4,7 +4,7 @@ import { prepare, deploy, getBigNumber } from "./utilities"
 
 describe("MirinPoolBento", function () {
   before(async function () {
-    await prepare(this, ["ERC20Mock", "BentoBoxV1", "MirinPoolBento"])
+    await prepare(this, ["ERC20Mock", "BentoBoxV1Flat", "MirinPoolBento"])
   })
 
   beforeEach(async function () {
@@ -13,7 +13,7 @@ describe("MirinPoolBento", function () {
       ["weth", this.ERC20Mock, ["WETH", "ETH", getBigNumber("10000000")]],
       ["sushi", this.ERC20Mock, ["SUSHI", "SUSHI", getBigNumber("10000000")]],
       ["dai", this.ERC20Mock, ["DAI", "DAI", getBigNumber("10000000")]],
-      ["bento", this.BentoBoxV1, [this.weth.address]],
+      ["bento", this.BentoBoxV1Flat, [this.weth.address]],
       ["pool", this.MirinPoolBento, [this.bento.address, this.sushi.address, this.dai.address, "0x0000000000000000000000000000000000000000000000000000000000000001", 1, this.alice.address]]
     ])
     // Whitelist Pool on Bento
