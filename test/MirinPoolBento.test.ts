@@ -30,7 +30,7 @@ describe("MirinPoolBento", function () {
  
   describe("mint", function () {
     it("mint LP tokens from bento deposits", async function () {
-      await expect(this.pool.mint(this.alice.address).to.be.revertedWith("MIRIN: INSUFFICIENT_LIQUIDITY_MINTED")
+      await expect(this.pool.mint(this.alice.address)).to.be.revertedWith("MIRIN: INSUFFICIENT_LIQUIDITY_MINTED")
     })
   })
 })
