@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.5;
 
+interface IMasterChefUserInfo {
+    function userInfo(uint256 pid, address account) external view returns (uint256, uint256);
+}
+
 interface IERC20 {
     function balanceOf(address account) external view returns (uint256);
     function totalSupply() external view returns (uint256);
-}
-
-interface IMasterChefUserInfo {
-    function userInfo(uint256 pid, address account) external view returns (uint256, uint256);
 }
 
 interface IBentoBoxV1BalanceAmount {
@@ -50,7 +50,7 @@ contract SUSHIPOWAH {
         (uint256 lp_stakedBalance, ) = chef.userInfo(12, account);
         uint256 lp_balance = pair.balanceOf(account) + lp_stakedBalance; // add LP tokens & those staked in MasterChef
         uint256 lp_powah = sushi.balanceOf(address(pair)) * lp_balance / pair.totalSupply() * 2; // calculate SUSHI weight from adjusted LP staking
-        powah = xsushi_powah + lp_powah; // combine LP and xSushi weights for 'powah'
+        powah = xsushi_powah + lp_powah; // combine LP & xSushi weights for 'powah'
     }
 
     /// @notice Returns total 'powah' supply.
