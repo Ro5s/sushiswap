@@ -41,7 +41,7 @@ contract SUSHIPOWAH {
     function transfer(address, uint256) external pure returns (bool) { return false; }
     function transferFrom(address, address, uint256) external pure returns (bool) { return false; }
 
-    /// @notice Returns SUSHI voting 'powah' for `account`.
+    /// @notice Returns SUSHI voting 'powah' for `account`. mere test
     function balanceOf(address account) external view returns (uint256 powah) {
         uint256 bento_balance = bento.toAmount(bar, bento.balanceOf(bar, account), false); 
         uint256 crxsushi_balance = IERC20(crxSushi).balanceOf(account) * ICreamRate(crxSushi).exchangeRateStored() / 10**18; // adjust CREAM balance against rate
